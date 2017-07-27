@@ -54,21 +54,9 @@
     <Compile Include="Entities\Base\Implementation\EntityBase.cs" />
     <Compile Include="Entities\Base\Interface\IEntity.cs" />
     <Compile Include="Entities\Person.cs" />
-    <Compile Include="Migrations\201707261129260_Initial.cs" />
-    <Compile Include="Migrations\201707261129260_Initial.Designer.cs">
-      <DependentUpon>201707261129260_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707261151043_nextone.cs" />
-    <Compile Include="Migrations\201707261151043_nextone.Designer.cs">
-      <DependentUpon>201707261151043_nextone.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707261957188_AddressValidationChanged.cs" />
-    <Compile Include="Migrations\201707261957188_AddressValidationChanged.Designer.cs">
-      <DependentUpon>201707261957188_AddressValidationChanged.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707271006208_ValidationRules.cs" />
-    <Compile Include="Migrations\201707271006208_ValidationRules.Designer.cs">
-      <DependentUpon>201707271006208_ValidationRules.cs</DependentUpon>
+    <Compile Include="Migrations\201707271210013_init.cs" />
+    <Compile Include="Migrations\201707271210013_init.Designer.cs">
+      <DependentUpon>201707271210013_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,17 +68,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707261129260_Initial.resx">
-      <DependentUpon>201707261129260_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707261151043_nextone.resx">
-      <DependentUpon>201707261151043_nextone.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707261957188_AddressValidationChanged.resx">
-      <DependentUpon>201707261957188_AddressValidationChanged.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707271006208_ValidationRules.resx">
-      <DependentUpon>201707271006208_ValidationRules.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707271210013_init.resx">
+      <DependentUpon>201707271210013_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

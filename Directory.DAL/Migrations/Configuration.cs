@@ -7,16 +7,15 @@ namespace Directory.DAL.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DirectoryDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Directory.DAL.DirectoryDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(DirectoryDbContext context)
+        protected override void Seed(Directory.DAL.DirectoryDbContext context)
         {
-
             var peter = new Person
             {
                 Id = new Guid("5abdfee1-c970-4afd-aff8-aa3cfef8b1ac"),
@@ -61,7 +60,6 @@ namespace Directory.DAL.Migrations
 
             context.Adresses.AddOrUpdate(i => i.Id, firstAddress, secondAddress);
             context.SaveChanges();
-
         }
     }
 }

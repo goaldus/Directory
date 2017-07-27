@@ -7,13 +7,13 @@ namespace Directory.DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddressValidationChanged : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddressValidationChanged));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707261957188_AddressValidationChanged"; }
+            get { return "201707271210013_init"; }
         }
         
         string IMigrationMetadata.Source
