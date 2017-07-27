@@ -1,0 +1,89 @@
+﻿@model IEnumerable<global::Directory.BL.Models.PersonDetailModel>
+
+@{
+    ViewBag.Title = "Adresář";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br/>
+@Html.ActionLink("Přidat osobu", "Create")
+
+<table>
+    @{int counter = 0;}
+    @foreach (var person in Model)
+        {
+            <tr>
+                <td>
+                    <h2>@Html.Label(person.FirstName + " " + person.LastName)</h2>
+                    <p>
+                        @Html.Label("IČO: " + person.IN)<br/>
+                        @Html.Label("DIČ: " + person.TIN)<br />
+                        <span id="@("company" + counter)"></span>
+                        
+                    </p>
+
+                    <div id="@("div" + counter)"></div>
+                    <p>
+                        @Html.ActionLink("Editovat", "Edit", new {id = person.Id}) |
+                        @Html.ActionLink("Odstranit", "Delete",
+                            new {id = person.Id},
+                            new {onclick = "return confirm('Opravdu chcete smazat tuto osobu?');"}) |
+                        <a href="#" class="personDetail" id="@counter@person.Id">Detail osoby</a>
+                        @if (person.IN != null)
+                        {
+                            <text>|</text> @:<a href="#" class="detailINButton" id="@counter@person.IN">Detail IČ</a>
+                        }              
+                    </p>
+                </td>
+            </tr>
+            counter++;
+        }
+</table>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $('.personDetail').on('click',
+        function () {
+            var indexLength = this.id.length - 36;
+            var div = "#div" + this.id.substr(0, indexLength);
+            var actionLink = "#" + this.id;
+
+            if ($(div).is(':empty')) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Address/Detail/" + this.id.substr(indexLength),
+                    success: function(data, textStatus, jqXHR) {
+                        $(div).html(data);
+                        $(actionLink).text("Skrýt detail osoby");
+                    }
+                });
+            } else {
+                $(div).html("");
+                $(actionLink).text("Detail osoby");
+            }
+        });
+
+    $('.detailINButton').on('click',
+        function () {               // Testing if Identification number is set
+            if (this.id.length < 9) //valid Identification number always have 8 digits + at least 1 (my index number)
+                return;
+
+            var indexLength = this.id.length - 8;
+            var span = "#company" + this.id.substr(0, indexLength);
+            var actionLink = "#" + this.id;
+
+            if ($(span).is(':empty')) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Person/Detail/" + this.id.substr(indexLength),
+                    success: function (data, textStatus, jqXHR) {
+                        $(span).html(data);
+                        $(actionLink).text("Skrýt detail IČ");
+                    }
+                });
+            } else {
+                $(span).html("");
+                $(actionLink).text("Detail IČ");
+            }
+        });
+</script>

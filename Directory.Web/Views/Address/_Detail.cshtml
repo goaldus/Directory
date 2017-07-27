@@ -1,0 +1,35 @@
+﻿@model IEnumerable<global::Directory.BL.Models.AddressDetailModel>
+
+
+<table>
+    @{int counter = 1;}
+    @foreach (var address in Model)
+    {
+        <tr>
+            <td>
+                <h4>@Html.Label("Bydliště " + counter)</h4>
+                <p>
+                    @Html.Label("Město: " + address.City)
+                    <br/><label>Ulice: @address.Street</label>
+                    <br/>@Html.Label("PSČ: " + address.ZipCode)
+                </p>
+                <p>
+                    @Html.ActionLink("Editovat", "Edit", new {id = address.Id}) |
+                    @Html.ActionLink("Odstranit", "Delete",
+                        new {id = address.Id},
+                        new {onclick = "return confirm('Opravdu chcete smazat toto bydliště?');"}) 
+                </p>
+            </td>
+        </tr>
+        counter++;
+    }
+    <tr>
+        <td>
+            @Html.ActionLink("Přidat adresu", "Create", new {id = @ViewBag.PersonId})
+        </td>
+    </tr>
+</table>
+
+<br/>
+<br/>
+
