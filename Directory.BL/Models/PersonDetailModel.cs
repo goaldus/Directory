@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Directory.BL.ValidationRules;
+using Directory.DAL.ValidationRules;
 
 namespace Directory.BL.Models
 {
@@ -17,7 +17,6 @@ namespace Directory.BL.Models
         public string LastName { get; set; }
 
         [Display(Name = "IČ")]
-        [RegularExpression(@"^\d{8}$", ErrorMessage = "IČ musí mít pouze 8 číslic, např. 12345678!")]
         [IdentificationNumber("{0} není dělitelné 11!")]
         [ExistingIdentificationNumber("{0} nemá záznam v ARESu!")]
         public string IN { get; set; }

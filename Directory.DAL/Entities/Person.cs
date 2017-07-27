@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Directory.BL.ValidationRules;
 using Directory.DAL.Entities.Base.Implementation;
+using Directory.DAL.ValidationRules;
 
 namespace Directory.DAL.Entities
 {
@@ -13,7 +13,6 @@ namespace Directory.DAL.Entities
         [Required]
         public string LastName { get; set; }
 
-        [RegularExpression(@"^\d{8}$", ErrorMessage = "IN number has to have 8 digits eg. 12345678!")]
         [IdentificationNumber("{0} not divisible by 11!")]
         [ExistingIdentificationNumber("{0} no record in ARES!")]
         public string IN { get; set; }

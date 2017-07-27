@@ -1,8 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 using System.Xml;
 
-namespace Directory.BL.ValidationRules
+namespace Directory.DAL.ValidationRules
 {
     public class ExistingIdentificationNumber : ValidationAttribute
     {
@@ -15,7 +16,11 @@ namespace Directory.BL.ValidationRules
         {
             if (value != null)
             {
+                var regex = new Regex(@"^\d{8}$");
                 var identificationNumber = value.ToString();
+
+                if (!regex.Match(identificationNumber).Success)
+                    return new ValidationResult("IČ musí mít pouze 8 číslic!");
 
                 var xmldoc = new XmlDocument();
                 xmldoc.Load("http://wwwinfo.mfcr.cz/cgi-bin/ares/darv_std.cgi?ico=" + identificationNumber);

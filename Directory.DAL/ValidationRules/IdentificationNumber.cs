@@ -1,7 +1,7 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
-namespace Directory.BL.ValidationRules
+namespace Directory.DAL.ValidationRules
 {
     public class IdentificationNumber : ValidationAttribute
     {
@@ -14,7 +14,12 @@ namespace Directory.BL.ValidationRules
         {
             if (value != null)
             {
+                var regex = new Regex(@"^\d{8}$");
                 var identificationNumber = value.ToString();
+
+                if (!regex.Match(identificationNumber).Success)
+                    return new ValidationResult("IČ musí mít pouze 8 číslic!");
+
                 var controlNumber = (int)(identificationNumber[7] - '0');
 
                 int sum = 0;
