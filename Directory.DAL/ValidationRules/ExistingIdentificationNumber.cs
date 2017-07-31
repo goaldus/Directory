@@ -25,15 +25,7 @@ namespace Directory.DAL.ValidationRules
                 var xmldoc = new XmlDocument();
                 xmldoc.Load("http://wwwinfo.mfcr.cz/cgi-bin/ares/darv_std.cgi?ico=" + identificationNumber);
 
-
-                XmlNodeList nodeList = xmldoc.GetElementsByTagName("are:Pocet_zaznamu");
-
-                int entryNumber = 0;
-                foreach (XmlNode node in nodeList)
-                {
-                    entryNumber = Convert.ToInt32(node.InnerText);
-                }
-
+                int entryNumber = Convert.ToInt32(xmldoc.GetElementsByTagName("are:Pocet_zaznamu").Item(0).InnerText);
                 if (entryNumber == 0)
                 {
                     var errormessage = FormatErrorMessage(validationContext.DisplayName);

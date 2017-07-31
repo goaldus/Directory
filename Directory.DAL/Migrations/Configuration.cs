@@ -21,7 +21,7 @@ namespace Directory.DAL.Migrations
                 Id = new Guid("5abdfee1-c970-4afd-aff8-aa3cfef8b1ac"),
                 FirstName = "Petr",
                 LastName = "Rychlý",
-                IN = "26308789",
+                IN = 26308789,
                 TIN = "CZ26308789"
             };
 
@@ -30,7 +30,7 @@ namespace Directory.DAL.Migrations
                 Id = new Guid("371d7cfe-61c1-4600-ad82-a62554bed8c5"),
                 FirstName = "Jan",
                 LastName = "Novotný",
-                IN = "26702924",
+                IN = 26702924,
                 TIN = "CZ26702924"
             };
 

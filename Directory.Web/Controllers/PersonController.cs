@@ -1,9 +1,5 @@
 ﻿using Directory.BL.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using System.Xml;
 using Directory.BL.Models;
@@ -86,44 +82,16 @@ namespace Directory.Web.Controllers
             xmldoc.Load("http://wwwinfo.mfcr.cz/cgi-bin/ares/darv_std.cgi?ico=" + id);
 
 
-            XmlNodeList nodeList = xmldoc.GetElementsByTagName("are:Obchodni_firma");
-            foreach (XmlNode node in nodeList)
-            {
-                ViewBag.CompanyName = node.InnerText;
-            }
-
-            nodeList = xmldoc.GetElementsByTagName("are:Datum_vzniku");
-            string s = "";
-            foreach (XmlNode node in nodeList)
-            {
-                s = node.InnerText;
-            }
-            string[] date = s.Split('-');
+            ViewBag.CompanyName = xmldoc.GetElementsByTagName("are:Obchodni_firma").Item(0).InnerText;
+         
+            string str = xmldoc.GetElementsByTagName("are:Datum_vzniku").Item(0).InnerText;
+            string[] date = str.Split('-');
             ViewBag.CreatedOn = date[2] + "." + date[1] + "." + date[0];
 
-            nodeList = xmldoc.GetElementsByTagName("dtt:Nazev_obce");
-            foreach (XmlNode node in nodeList)
-            {
-                ViewBag.City = node.InnerText;
-            }
-
-            nodeList = xmldoc.GetElementsByTagName("dtt:Nazev_ulice");
-            foreach (XmlNode node in nodeList)
-            {
-                ViewBag.Street = node.InnerText;
-            }
-
-            nodeList = xmldoc.GetElementsByTagName("dtt:Cislo_domovni");
-            foreach (XmlNode node in nodeList)
-            {
-                ViewBag.HouseNumber = node.InnerText;
-            }
-
-            nodeList = xmldoc.GetElementsByTagName("dtt:PSC");
-            foreach (XmlNode node in nodeList)
-            {
-                ViewBag.ZipCode = node.InnerText;
-            }
+            ViewBag.City = xmldoc.GetElementsByTagName("dtt:Nazev_obce").Item(0).InnerText;
+            ViewBag.Street = xmldoc.GetElementsByTagName("dtt:Nazev_ulice").Item(0).InnerText;
+            ViewBag.HouseNumber = xmldoc.GetElementsByTagName("dtt:Cislo_domovni").Item(0).InnerText;
+            ViewBag.ZipCode = xmldoc.GetElementsByTagName("dtt:PSC").Item(0).InnerText;
 
             return PartialView("_INDetail");
         }

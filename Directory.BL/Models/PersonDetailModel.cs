@@ -19,7 +19,7 @@ namespace Directory.BL.Models
         [Display(Name = "IČ")]
         [IdentificationNumber("{0} není dělitelné 11!")]
         [ExistingIdentificationNumber("{0} nemá záznam v ARESu!")]
-        public string IN { get; set; }
+        public int IN { get; set; }
 
         [Display(Name = "DIČ")]
         [RegularExpression(@"^[A-Z]{2}\d{8}(\d{1,2})?$", ErrorMessage = "DIČ musí začínat kódem státu, následovaným 8-10 číslicemi např. CZ12345678!")]

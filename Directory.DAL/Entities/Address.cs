@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Directory.DAL.Entities.Base.Implementation;
+﻿using Directory.DAL.Entities.Base.Implementation;
 
 namespace Directory.DAL.Entities
 {

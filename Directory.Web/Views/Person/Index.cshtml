@@ -40,50 +40,53 @@
         }
 </table>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script type="text/javascript">
-    $('.personDetail').on('click',
-        function () {
-            var indexLength = this.id.length - 36;
-            var div = "#div" + this.id.substr(0, indexLength);
-            var actionLink = "#" + this.id;
+@section scripts{
 
-            if ($(div).is(':empty')) {
-                $.ajax({
-                    type: "GET",
-                    url: "/Address/Detail/" + this.id.substr(indexLength),
-                    success: function(data, textStatus, jqXHR) {
-                        $(div).html(data);
-                        $(actionLink).text("Skrýt detail osoby");
-                    }
-                });
-            } else {
-                $(div).html("");
-                $(actionLink).text("Detail osoby");
-            }
-        });
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $('.personDetail').on('click',
+            function () {
+                var indexLength = this.id.length - 36;
+                var div = "#div" + this.id.substr(0, indexLength);
+                var actionLink = "#" + this.id;
 
-    $('.detailINButton').on('click',
-        function () {               // Testing if Identification number is set
-            if (this.id.length < 9) //valid Identification number always have 8 digits + at least 1 (my index number)
-                return;
+                if ($(div).is(':empty')) {
+                    $.ajax({
+                        type: "GET",
+                        url: "/Address/Detail/" + this.id.substr(indexLength),
+                        success: function(data, textStatus, jqXHR) {
+                            $(div).html(data);
+                            $(actionLink).text("Skrýt detail osoby");
+                        }
+                    });
+                } else {
+                    $(div).html("");
+                    $(actionLink).text("Detail osoby");
+                }
+            });
 
-            var indexLength = this.id.length - 8;
-            var span = "#company" + this.id.substr(0, indexLength);
-            var actionLink = "#" + this.id;
+        $('.detailINButton').on('click',
+            function () {               // Testing if Identification number is set
+                if (this.id.length < 9) //valid Identification number always have 8 digits + at least 1 (my index number)
+                    return;
 
-            if ($(span).is(':empty')) {
-                $.ajax({
-                    type: "GET",
-                    url: "/Person/Detail/" + this.id.substr(indexLength),
-                    success: function (data, textStatus, jqXHR) {
-                        $(span).html(data);
-                        $(actionLink).text("Skrýt detail IČ");
-                    }
-                });
-            } else {
-                $(span).html("");
-                $(actionLink).text("Detail IČ");
-            }
-        });
-</script>
+                var indexLength = this.id.length - 8;
+                var span = "#company" + this.id.substr(0, indexLength);
+                var actionLink = "#" + this.id;
+
+                if ($(span).is(':empty')) {
+                    $.ajax({
+                        type: "GET",
+                        url: "/Person/Detail/" + this.id.substr(indexLength),
+                        success: function (data, textStatus, jqXHR) {
+                            $(span).html(data);
+                            $(actionLink).text("Skrýt detail IČ");
+                        }
+                    });
+                } else {
+                    $(span).html("");
+                    $(actionLink).text("Detail IČ");
+                }
+            });
+    </script>
+}
