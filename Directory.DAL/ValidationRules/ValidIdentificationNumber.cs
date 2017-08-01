@@ -3,9 +3,9 @@ using System.Text.RegularExpressions;
 
 namespace Directory.DAL.ValidationRules
 {
-    public class IdentificationNumber : ValidationAttribute
+    public class ValidIdentificationNumber : ValidationAttribute
     {
-        public IdentificationNumber(string errorMessage)
+        public ValidIdentificationNumber(string errorMessage)
         {
             ErrorMessage = errorMessage;
         }

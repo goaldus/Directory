@@ -17,7 +17,8 @@ namespace Directory.BL.Models
         public string LastName { get; set; }
 
         [Display(Name = "IČ")]
-        [IdentificationNumber("{0} není dělitelné 11!")]
+        [ValidInteger(ErrorMessage = "IČ musí mít pouze 8 číslic!")]
+        [ValidIdentificationNumber("{0} není dělitelné 11!")]
         [ExistingIdentificationNumber("{0} nemá záznam v ARESu!")]
         public int? IN { get; set; }
 

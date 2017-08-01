@@ -13,7 +13,7 @@ namespace Directory.DAL.Entities
         [Required]
         public string LastName { get; set; }
 
-        [IdentificationNumber("{0} not divisible by 11!")]
+        [ValidIdentificationNumber("{0} not divisible by 11!")]
         [ExistingIdentificationNumber("{0} no record in ARES!")]
         public int? IN { get; set; }
 
