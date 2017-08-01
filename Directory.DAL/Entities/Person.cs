@@ -15,7 +15,7 @@ namespace Directory.DAL.Entities
 
         [IdentificationNumber("{0} not divisible by 11!")]
         [ExistingIdentificationNumber("{0} no record in ARES!")]
-        public int IN { get; set; }
+        public int? IN { get; set; }
 
         [RegularExpression(@"^[A-Z]{2}\d{8}(\d{1,2})?$", ErrorMessage = "TIN number has to start with state code and follow up with 8 - 10 digits eg. CZ12345678!")]
         public string TIN { get; set; }
